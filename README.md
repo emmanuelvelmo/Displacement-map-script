@@ -1,2 +1,1 @@
-# Displacement-map-generator (ongoing)
-A script to generate multiple displacement maps automatically from images
+A script to generate multiple displacement maps automatically from png images
