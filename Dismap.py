@@ -8,8 +8,8 @@ print("")
 for dir_it, subdir_it, arch_it in os.walk(iter_dir):
     #SE ACCEDE A CADA ARCHIVO DEL DIRECTORIO
     for arch_n in arch_it:
-        #SI ES UN ARCHIVO jpg
-        if arch_n.endswith(".jpg"):
+        #SI ES UN ARCHIVO png
+        if arch_n.endswith(".png"):
             #SE CARGA EL ARCHIVO
             arch_dir = os.path.join(dir_it, arch_n)
             arch_tmp = cv2.imread(arch_dir)
@@ -35,7 +35,7 @@ for dir_it, subdir_it, arch_it in os.walk(iter_dir):
             arch_fin = 255 - arch_fin
 
             #SE REEMPLAZA PARTE DEL NOMBRE DEL ARCHIVO
-            arch_nv = arch_n.replace(".jpg", " (dismap).jpg")
+            arch_nv = arch_n.replace(".png", " (dismap).png")
             
             #RUTA COMPLETA PARA GUARDAR ARCHIVO
             dir_gdr = os.path.join(dir_it, arch_nv)
