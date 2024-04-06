@@ -1,20 +1,15 @@
 import os
 import cv2
-import numpy as np
 
-print("Place the program next to the directories (containing png files) to generate displacement maps")
-input("Press enter to continue...")
+iter_dir = input("Enter path: ")
 print("")
-
-#SE OBTIENE LA RUTA DEL PROGRAMA
-iter_dir = os.path.dirname(os.path.realpath(__file__))
 
 #SE ITERA EN LOS DIRECTORIOS RECURSIVAMENTE
 for dir_it, subdir_it, arch_it in os.walk(iter_dir):
     #SE ACCEDE A CADA ARCHIVO DEL DIRECTORIO
     for arch_n in arch_it:
-        #SI ES UN ARCHIVO png
-        if arch_n.endswith(".png"):
+        #SI ES UN ARCHIVO jpg
+        if arch_n.endswith(".jpg"):
             #SE CARGA EL ARCHIVO
             arch_dir = os.path.join(dir_it, arch_n)
             arch_tmp = cv2.imread(arch_dir)
@@ -23,11 +18,11 @@ for dir_it, subdir_it, arch_it in os.walk(iter_dir):
             arch_tmp_byn = cv2.cvtColor(arch_tmp, cv2.COLOR_BGR2GRAY)
 
             #SE APLICA DESENFOQUE GAUSSIANO PARA SUAVIZAR IMAGEN
-            arch_tmp_byn = cv2.GaussianBlur(arch_tmp_byn, (5, 5), 0)
+            arch_tmp_byn = cv2.GaussianBlur(arch_tmp_byn, (3, 3), 0)
 
             #SE CALCULA MAPA DE ALTURA CON FILTRO DE SOBEL
-            cord_x = cv2.Sobel(arch_tmp_byn, cv2.CV_64F, 1, 0, ksize = 5)
-            cord_y = cv2.Sobel(arch_tmp_byn, cv2.CV_64F, 0, 1, ksize = 5)
+            cord_x = cv2.Sobel(arch_tmp_byn, cv2.CV_64F, 1, 0, ksize = 0)
+            cord_y = cv2.Sobel(arch_tmp_byn, cv2.CV_64F, 0, 1, ksize = 0)
             alt_map = cv2.magnitude(cord_x, cord_y)
             
             #SE NORMALIZAN VALORES
@@ -40,7 +35,7 @@ for dir_it, subdir_it, arch_it in os.walk(iter_dir):
             arch_fin = 255 - arch_fin
 
             #SE REEMPLAZA PARTE DEL NOMBRE DEL ARCHIVO
-            arch_nv = arch_n.replace(".png", " (dismap).png")
+            arch_nv = arch_n.replace(".jpg", " (dismap).jpg")
             
             #RUTA COMPLETA PARA GUARDAR ARCHIVO
             dir_gdr = os.path.join(dir_it, arch_nv)
