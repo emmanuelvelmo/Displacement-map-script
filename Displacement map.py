@@ -43,7 +43,7 @@ for dir_it, subdir_it, arch_it in os.walk(iter_dir):
             dir_gdr = os.path.join(dir_it, arch_nv)
 
             #SE GUARDA ARCHIVO
-            cv2.imwrite(dir_gdr, arch_fin)
+            cv2.imwrite(dir_gdr, arch_fin, [cv2.IMWRITE_PNG_COMPRESSION, 9])
 
             #SE MUESTRA EL ARCHIVO PROCESADO
             print(arch_n)
