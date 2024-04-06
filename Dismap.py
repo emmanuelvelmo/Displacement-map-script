@@ -4,6 +4,8 @@ import cv2
 iter_dir = input("Enter path: ")
 print("")
 
+cont_arch = 0
+
 #SE ITERA EN LOS DIRECTORIOS RECURSIVAMENTE
 for dir_it, subdir_it, arch_it in os.walk(iter_dir):
     #SE ACCEDE A CADA ARCHIVO DEL DIRECTORIO
@@ -46,6 +48,8 @@ for dir_it, subdir_it, arch_it in os.walk(iter_dir):
             #SE MUESTRA EL ARCHIVO PROCESADO
             print(arch_n)
 
-            print("")
+            cont_arch += 1
 
-input("Press enter to continue...")
+print("")
+print(f"{cont_arch} generated files.")
+input("Press enter to exit...")
