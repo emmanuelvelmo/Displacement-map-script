@@ -13,7 +13,7 @@ iter_dir = os.path.dirname(os.path.realpath(__file__))
 for dir_it, subdir_it, arch_it in os.walk(iter_dir):
     #SE ACCEDE A CADA ARCHIVO DEL DIRECTORIO
     for arch_n in arch_it:
-        #SI ES UN ARCHIVO PNG
+        #SI ES UN ARCHIVO png
         if arch_n.endswith(".png"):
             #SE CARGA EL ARCHIVO
             arch_dir = os.path.join(dir_it, arch_n)
