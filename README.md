@@ -1,3 +1,10 @@
+# Displacement map script
+<p align="left">
+  <strong>-</strong>
+  <br/>
+  <img src="https://github.com/user-attachments/assets/b8ae462e-6331-469f-9bbe-e56e4dd1a3c6"/>
+</p>
+
 <p align="left">
   <strong>Input Image</strong>
   <br/>
